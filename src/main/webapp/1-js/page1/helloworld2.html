@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+
+</head>
+<body>
+   <button>ClickMe</button>
+</body>
+</html>
+
+<!-- 整个HTML文档被加载后,获取其中的节点. 把script节点放在html文档的最后 , 缺点是不符合写js代码的习惯 -->
+<script type="text/javascript">
+	// 1. 获取button
+	var btn = document.getElementsByTagName("button");
+	// 2. 为button添加onclick响应函数
+	btn[0].onclick = function(){
+		alert("helloworld!");
+	}
+</script>

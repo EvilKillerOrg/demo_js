@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>解析JSON中的内容</title>
+
+<script type="text/javascript">
+	window.onload = function() {
+	var aNode = document.getElementsByTagName("a");
+	for (var i = 0; i < aNode.length; i++) {
+		aNode[i].onclick = function() {
+
+		var request = new XMLHttpRequest();
+		var url = this.href;
+		var method = "GET";
+		request.open(method, url);
+		request.send(null);
+
+		request.onreadystatechange = function() {
+		if (request.readyState == 4) {
+			if (request.status == 200 || request.status == 304) {
+				// JSON格式需要使用 responseText 来获取,并且使用 eval() 来处理
+				var result = request.responseText;
+				var object = eval('(' + result + ')');
+
+				//目标格式为:
+				/*
+				<h2>
+					<a href="mailto:andy@.cc">Andy Mail</a>
+				</h2>
+				 */
+
+				var name = object.person.name;
+				var mail = object.person.mail;
+
+				var aNode = document.createElement("a");
+				aNode.appendChild(document.createTextNode(name));
+				aNode.href = "mailto: "+mail;
+				var h2Node = document.createElement("h2");
+				h2Node.appendChild(aNode);
+				
+				var detailsNode = document.getElementById("details");
+				detailsNode.innerHTML="";
+				detailsNode.appendChild(h2Node);
+				
+			}
+		}
+		}
+
+		return false;
+		}
+	}
+	}
+</script>
+
+
+</head>
+<body>
+	<ul>
+		<li><a href="file/andy.json">Andy</a></li>
+		<li><a href="file/richard.json">Richard</a></li>
+		<li><a href="file/jeremy.json">Jeremy</a></li>
+	</ul>
+
+	<div id="details"></div>
+</body>
+</html>

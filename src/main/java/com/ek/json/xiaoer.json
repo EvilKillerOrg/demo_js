@@ -1,0 +1,11 @@
+{
+	"name":"小二",
+	"age":22.2,
+	"birthday":"1990-02-02",
+	"school":"蓝翔",
+	"major":["理发1","挖土1"],
+	"majorList":["理发2","挖土2"],
+	"girl_friend":false,
+	"car":null,
+	"comment":"这是一个注释"
+}

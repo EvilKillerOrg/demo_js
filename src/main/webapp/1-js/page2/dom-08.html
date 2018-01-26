@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>替换节点</title>
+
+<script type="text/javascript">
+	//测试replaceChild(newChild,oldChild) 方法
+	window.onload = function() {
+		alert(1);
+		/*
+		//测试替换 ,替换的同时还有移动的功能(把北京换成了红警,红警就没了等于移动了)
+		var hjNode = document.getElementById("hj");
+		var bjNode = document.getElementById("bj");
+		var cityNode = document.getElementById("city");
+		
+		cityNode.replaceChild(hjNode, bjNode); 
+		 */
+
+		/*
+		//实现两个节点的互换,方法一: 克隆一个中间量
+		var hjNode = document.getElementById("hj");
+		var bjNode = document.getElementById("bj");
+		var cityNode = document.getElementById("city");
+		var gameNode = document.getElementById("game");
+		
+		//需要一个中间环节 ,  克隆一个bjNode 为bjNode2
+		//cloneNode(deep) ; deep 为true才时可以克隆子节点
+		var bjNode2 = bjNode.cloneNode(true);
+		gameNode.replaceChild(bjNode2, hjNode);
+		cityNode.replaceChild(hjNode, bjNode);
+		 */
+
+		//运行两节点互换的方法二
+		var hjNode = document.getElementById("hj");
+		var bjNode = document.getElementById("bj");
+		replaceEach(hjNode, bjNode);
+	}
+
+	//实现两个节点的互换,方法二: 自定义互换两个节点的函数
+	function replaceEach(aNode, bNode) {
+		//1. 获取 aNode 和 bNode 的父节点. 使用 parentNode 属性
+		var aParent = aNode.parentNode;
+		var bParent = bNode.parentNode;
+
+		if (aParent && bParent) { //判断是否存在父节点
+			//2. 克隆 aNode 或 bNode
+			var aNode2 = aNode.cloneNode(true);
+
+			//3. 分别调用 aNode 的父节点和 bNode 的父节点的 replaceChild()方法实现节点的互换
+			bParent.replaceChild(aNode2, bNode);
+			aParent.replaceChild(bNode, aNode);
+		}
+	}
+</script>
+
+</head>
+<body>
+   <p>你喜欢哪个城市?</p>
+   <ul id="city">
+      <li id="bj" name="BeiJing">北京</li>
+      <li>上海</li>
+      <li>东京</li>
+      <li>首尔</li>
+   </ul>
+
+   <br>
+   <br>
+   <p>你喜欢哪款单机游戏?</p>
+   <ul id="game">
+      <li id="hj">红警</li>
+      <li>实况</li>
+      <li>极品飞车</li>
+      <li>魔兽</li>
+   </ul>
+
+   <br>
+   <br> gender:
+   <input type="radio" name="gender" value="male" />Male
+   <input type="radio" name="gender" value="female" />Female
+
+   <br>
+   <br> name:
+   <input type="text" name="username" value="atguigu" />
+
+</body>
+</html>

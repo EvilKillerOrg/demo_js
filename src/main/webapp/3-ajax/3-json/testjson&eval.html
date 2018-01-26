@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>先测一下JSON</title>
+<script type="text/javascript">
+
+	//这是一个json格式的示例,值可以是一个字符串,数字,JSON串,函数
+	var jsonObject = {
+		"name":"ek",
+		"age":22,
+		"address":{"city":"xian","province":"shannxi"},
+		"teaching":function(){
+			alert("JAVA...");
+			}
+	};
+	
+	alert(jsonObject.name);
+	alert(jsonObject.address.city);
+	jsonObject.teaching();
+	
+	
+	//测试eval() 方法, eval()可以把一个字符串作为js代码来执行
+	var testStr = "alert('hello eval!')";
+	eval(testStr);
+	
+	//使用 eval()方法 把一个字符串转换为JSON对象.
+	var jsonStr = "{'name':'whm'}";
+	var testJsonStr = eval('('+jsonStr+')');
+	alert(testJsonStr.name);
+	
+</script>
+
+</head>
+<body>
+
+</body>
+</html>

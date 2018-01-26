@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>插入节点</title>
+
+<script type="text/javascript">
+	//测试 insertBefore(newChild,oldChild) 插入节点
+	//该方法除了进行插入外, 还有移动节点的功能. 
+
+	window.onload = function() {
+		alert("abc");
+		/*
+		// insertBefore()的基本写法,把 #hj 插入到  #bj 节点的前面
+		var cityNode = document.getElementById("city");
+		var bjNode = document.getElementById("bj");
+		var hjNode = document.getElementById("hj");
+		cityNode.insertBefore(hjNode,bjNode);				
+		 */
+
+		 
+		//运行insertAfter 把#hj 插入到#dj 或者#se后面
+		var hjNode = document.getElementById("hj");
+		//var refNode = document.getElementById("se"); //用于测试refNode是其父节点的最后一个子节点
+		var refNode = document.getElementById("dj"); //用于测试refNode不是其父节点的最后一个子节点
+		insertAfter(hjNode, refNode);
+	}
+
+	
+	//原生的就没有insertAfter自己定义一个insertAfter方法, 把newNode 插入到refNode 的后面
+	function insertAfter(newNode, refNode) {
+		var parentNode = refNode.parentNode; //取得refNode的父节点
+		
+		if (parentNode) { //判断refNode的父节点是否存在
+			var lastNode = parentNode.lastChild; // 取得refNode父节点的最后一个节点
+			if (refNode == lastNode) {  //判断refNode是否就是其父节点的最后一个子节点
+				//refNode若是其父节点的最后一个子节点
+				parentNode.appendChild(newNode); //把newNode 插入为refNode 父节点的最后一个子节点. 
+			} else {
+				//refNode若不是其父节点的最后一个子节点
+				var nextNode = refNode.nextSibling; //取得refNode的下一个兄弟节点
+				parentNode.insertBefore(newNode, nextNode); //把newNode插入到refNode的下一个兄弟节点之前
+			}
+		}
+	}
+</script>
+
+</head>
+<body>
+   <p>你喜欢哪个城市?</p>
+   <ul id="city">
+      <li id="bj" name="BeiJing">北京</li>
+      <li>上海</li>
+      <li id="dj">东京</li>
+      <li id="se">首尔</li>
+   </ul>
+
+   <br>
+   <br>
+   <p>你喜欢哪款单机游戏?</p>
+   <ul id="game">
+      <li id="hj">红警</li>
+      <li>实况</li>
+      <li>极品飞车</li>
+      <li>魔兽</li>
+   </ul>
+
+   <br>
+   <br> gender:
+   <input type="radio" name="gender" value="male" />Male
+   <input type="radio" name="gender" value="female" />Female
+
+   <br>
+   <br> name:
+   <input type="text" name="username" value="atguigu" />
+
+</body>
+</html>

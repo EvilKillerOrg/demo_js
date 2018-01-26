@@ -1,0 +1,10 @@
+HelloAjax!!!<br>
+
+jQuery 对 Ajax操作进行了封装, <br>
+在jQuery中最底层的方法是 $.ajax(), <br>
+第二层是: load(), $.get() 和 $.post(), (jQuery中最常用的三个Ajax方法) <br>
+第三层是: $getScript() 和 $getJSON().<br>
+
+
+load()方法能载入HTML代码并插入到DOM中 结构是:load(url[,date][,callback]); <br>
+$.get(url[,date][,callback][,type]); <br>

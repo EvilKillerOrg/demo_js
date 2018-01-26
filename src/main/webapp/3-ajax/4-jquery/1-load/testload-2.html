@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>测试load()方法-2(解析HTML)</title>
+<script type="text/javascript" src="../../../common/jquery-3.2.1.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$("a").click(function() {
+			// 后面+" h2", 这是选择器 加上后就是只有h2部分,排除不需要的节点
+			// +" h2 a"是选择h2中的a节点
+			var url = this.href + " h2";
+			var args = {
+				"time" : new Date()
+			};
+			//任何一个html节点都可以使用load()方法来加载Ajax,结果将直接插入到这个html节点中
+			$("#details").load(url, args);
+
+			return false;
+		});
+	});
+</script>
+
+</head>
+<body>
+	<ul>
+		<li><a href="file/andy.html">Andy</a></li>
+		<li><a href="file/richard.html">Richard</a></li>
+		<li><a href="file/jeremy.html">Jeremy</a></li>
+	</ul>
+
+	<div id="details"></div>
+</body>
+</html>

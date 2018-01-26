@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Hello JQuery</title>
+<script type="text/javascript" src="../../common/jquery-3.2.1.js"></script>
+<script type="text/javascript">
+	$(function() {
+		//1. 选取button :    用$("button")选取
+		//2. 为所有button添加onclick 响应函数:     用$("button").click()添加onclick事件
+		$("button").click(function() {
+			//3.弹出helloworld
+			alert("Hello JQuery!!!");
+		});
+	});
+</script>
+</head>
+<body>
+	<button>ClickMe</button>
+</body>
+</html>

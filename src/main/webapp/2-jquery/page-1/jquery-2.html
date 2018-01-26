@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JQuery 和 DOM 对象</title>
+<script type="text/javascript" src="../../common/jquery-3.2.1.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$("button").click(function() {
+			/* 1. 由jQuery对象转为DOM对象 */
+			// 1). 获取一个jQuery对象
+			var $btn = $("button");
+			// 2). JQuery对象是一个数组
+			alert("jQuery对象是一个数组,length: "+$btn.length);
+			// 3). 可以通过数组的下标转为DOM对象
+			alert("转为DOM对象--"+$btn[0].firstChild.nodeValue);
+			alert("转为DOM对象--"+$btn[1].firstChild.nodeValue);
+			
+			
+			/* 2. 由DOM对象转为jQuery对象 */
+			// 1). 选取一个DOM对象
+			var btn = document.getElementById("btn");
+			// 2). 把DOM对象转为一个jQuery对象:  使用$()进行包装就可以了
+			alert("转为jQuery对象--"+$(btn).text());
+			
+			
+			/* 3.这也是一个把DOM转为jQuery的例子 */
+			//把DOM对象 this 用 $()包装就转为jQuery对象了,就可以用jQuery的方法了
+			//alert($(this).text());
+		});
+	});
+</script>
+</head>
+<body>
+	<button id="btn">ClickMe1</button>
+	<br>
+	<br>
+	<button>ClickMe2</button>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>测试$.get()/$.post()方法-1(解析xml)</title>
+<script type="text/javascript" src="../../../common/jquery-3.2.1.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("a").click(function(){
+		
+		var url = this.href;
+		var args  = {"time":new Date()};
+		
+		//url:
+		//args: JSON格式
+		//function: 回调函数(当响应结束时, 回调函数被触发, 响应结果在data中 )
+		$.get(url , args , function(data){ //post 直接把get换成post就行了
+			var name = $(data).find("name").text();
+			var mail = $(data).find("mail").text();
+			$("#details").empty().append("<h2><a href='mailto:"+ mail +" '>"+ name +"</a></h2>")
+                                                                                .append("<a href='mailto:"+ mail +" '>"+ mail +"</a>");
+		});
+		
+		return false;
+	});
+});
+</script>
+</head>
+<body>
+	<ul>
+		<li><a href="file/andy.xml">Andy</a></li>
+		<li><a href="file/richard.xml">Richard</a></li>
+		<li><a href="file/jeremy.xml">Jeremy</a></li>
+	</ul>
+
+	<div id="details"></div>
+</body>
+</html>
